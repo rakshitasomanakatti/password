@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASSWORD TOGGLE</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: burlywood;
+            background-position:center;
+            margin: 0;
+            padding: 30px;
+            justify-content: center;
+            align-items:center;
+            display:flex;
+         }
+
+        .button{
+            height:30px;
+            width:90px;
+            color:red;
+            background-color:blue;
+            text-align:center;
+            font-weight :100;
+        }
+        .box{
+            width:300px;
+            height: 150;
+            background-color:goldenrod;
+            padding:20px 30px;
+            border:none;
+            margin: none;
+            text-align:center;
+            border-radius:0%;
+            cursor:pointer;
+            
+        }
+        .box:hover{
+            background-color: brown;
+        }
+        input{
+            width:90%;
+            padding:8px;
+            margin:10px 0;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+    <h2>PASSWORD TOGGLE AND PASSWORD STRENGTH  CHECKER</h2>
+    <input class="password" id="password" placeholder="Enter Password" onkeyup="checkPassword()">
+    <button class="button" onclick="toggle()">SHOW/HIDE</button>
+    <h3 id="message"></h3>
+    </div>
+    <script>
+        
+        function toggle(){
+        let input = document.getElementById("password");
+
+        if(input.type === "password"){
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
+        /* PASWORD STRENGTH CHECK*/
+
+        function checkPassword(){
+            let pwd=document.getElementById("password").value;
+            let message=document.getElementById("message");
+
+            if(pwd.length==0){
+                message.innertext="";
+            }else if(pwd.length<5){
+                message.innerText="weak Password";
+                message.style.color="red";
+            }else if(pwd.length>=5 && pwd.length<8){
+                message.innerText="Medium Password";
+                message.style.color="orange";
+            }else{
+                message.innerText="Strong Password";
+                message.style.color="green"
+            }
+        }
+        
+    </script>
+</body>
+</html>
